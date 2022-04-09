@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "nebular-trial": "apps/nebular-trial",
+    "nebular-trial-e2e": "apps/nebular-trial-e2e"
+  }
+}

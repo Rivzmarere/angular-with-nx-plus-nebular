@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/nebular-trial",
+  "sourceRoot": "apps/nebular-trial/src",
+  "prefix": "nebular",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nebular-trial",
+        "index": "apps/nebular-trial/src/index.html",
+        "main": "apps/nebular-trial/src/main.ts",
+        "polyfills": "apps/nebular-trial/src/polyfills.ts",
+        "tsConfig": "apps/nebular-trial/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/nebular-trial/src/favicon.ico",
+          "apps/nebular-trial/src/assets"
+        ],
+        "styles": ["apps/nebular-trial/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/nebular-trial/src/environments/environment.ts",
+              "with": "apps/nebular-trial/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "nebular-trial:build:production"
+        },
+        "development": {
+          "browserTarget": "nebular-trial:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "nebular-trial:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/nebular-trial/src/**/*.ts",
+          "apps/nebular-trial/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/nebular-trial"],
+      "options": {
+        "jestConfig": "apps/nebular-trial/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
